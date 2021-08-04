@@ -5,25 +5,12 @@ class Solution:
         low, high = 0, len(nums) - 1
         while low <= high:
             mid = (low + high) // 2
+            result = min(nums[mid], result)
 
-            # Given we are at nums[mid] position.
-            # On the left we see: [nums[low], nums[low+1], ..., nums[mid-2], nums[mid-1]],
-            # on the right: [nums[mid+1], nums[mid+2], ..., nums[high-1], nums[high]].
-
-            head = nums[low]
-            left_neighbour = nums[max(mid - 1, 0)]
-            min_left = min(head, left_neighbour)
-
-            tail = nums[high]
-            right_neighbour = nums[min(mid + 1, len(nums) - 1)]
-            min_right = min(tail, right_neighbour)
-
-            result = min(min_left, min_right, result)
-
-            if min_left < min_right:
-                high = mid - 1
-            else:
+            if nums[mid] > nums[high]:
                 low = mid + 1
+            else:
+                high = mid - 1
 
         return result
 
