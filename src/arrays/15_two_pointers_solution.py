@@ -2,8 +2,10 @@ class Solution:
     def threeSum(self, nums):
         sorted_nums = sorted(nums)
 
-        triplets = set()
+        triplets = []
         for i in range(len(sorted_nums) - 1):
+            if i > 0 and sorted_nums[i] == sorted_nums[i - 1]:
+                continue
             self._two_sum(i, sorted_nums, triplets)
 
         return triplets
@@ -19,7 +21,7 @@ class Solution:
             elif sorted_nums[low] + sorted_nums[high] + first_value < 0:
                 low += 1
             else:
-                triplets.add((first_value, sorted_nums[low], sorted_nums[high]))
+                triplets.append((first_value, sorted_nums[low], sorted_nums[high]))
                 low += 1
 
 
