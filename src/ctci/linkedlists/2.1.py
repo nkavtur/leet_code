@@ -1,19 +1,4 @@
-class Node:
-    def __init__(self, value=None):
-        self.next = None
-        self.value = value
-
-    def __str__(self) -> str:
-        res = ''
-
-        current = self
-        while current.next:
-            res += f"{current.value} -> "
-            current = current.next
-        res += str(current.value)
-
-        return res
-
+from utils import Node
 
 def remove_duplicates1(head: Node):
     seen = set()
